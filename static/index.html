@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScholarLens · AI agent for scientific papers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">◑</span>
+      <div>
+        <h1>ScholarLens</h1>
+        <p class="tagline">An AI agent that reads and explains scientific papers — 2000 to today.</p>
+      </div>
+    </div>
+    <a class="ghlink" href="https://arxiv.org" target="_blank" rel="noopener">corpus: arXiv</a>
+  </header>
+
+  <main>
+    <section class="search-panel">
+      <form id="search-form">
+        <div class="search-row">
+          <input id="query" type="text" placeholder="Search a topic, e.g. “transformer attention”, “CRISPR off-target”, “dark matter halos”" autocomplete="off" />
+          <button type="submit" id="search-btn">Search</button>
+        </div>
+        <div class="filters">
+          <label>From <input id="year-from" type="number" min="2000" max="2100" value="2000" /></label>
+          <label>To <input id="year-to" type="number" min="2000" max="2100" /></label>
+          <label>Results
+            <select id="max-results">
+              <option>8</option><option selected>12</option><option>20</option><option>30</option>
+            </select>
+          </label>
+          <label>Sort
+            <select id="sort-by">
+              <option value="relevance" selected>Relevance</option>
+              <option value="newest">Newest</option>
+              <option value="updated">Recently updated</option>
+            </select>
+          </label>
+        </div>
+      </form>
+    </section>
+
+    <div class="layout">
+      <section id="results" class="results">
+        <p class="hint">Search above to pull papers from arXiv, then click <strong>Analyse</strong> to have the agent break one down.</p>
+      </section>
+
+      <aside id="detail" class="detail hidden">
+        <button class="close" id="detail-close" aria-label="Close">×</button>
+        <div id="detail-body"></div>
+      </aside>
+    </div>
+  </main>
+
+  <template id="paper-card">
+    <article class="card">
+      <h3 class="card-title"></h3>
+      <p class="card-meta"></p>
+      <p class="card-abstract"></p>
+      <div class="card-actions">
+        <button class="analyse-btn">Analyse</button>
+        <a class="pdf-link" target="_blank" rel="noopener">PDF ↗</a>
+      </div>
+    </article>
+  </template>
+
+  <script src="/app.js"></script>
+</body>
+</html>
