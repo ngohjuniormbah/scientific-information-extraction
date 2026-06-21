@@ -1,19 +1,8 @@
-# dependencies
-/node_modules
-
-# next.js
-/.next/
-/out/
-next-env.d.ts
-
-# production
-/build
-
-# env
 .env
-.env*.local
-
-# misc
+__pycache__/
+*.pyc
+.venv/
+venv/
 .DS_Store
-*.tsbuildinfo
-.vercel
+*.egg-info/
+.pytest_cache/
